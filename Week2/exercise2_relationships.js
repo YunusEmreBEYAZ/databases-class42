@@ -16,7 +16,7 @@ connection.query("USE week2", (err) => {
     if (err) throw err;
 });
 
-const researchPapersTable = "CREATE TABLE research_Papers(paper_id INT PRIMARY KEY, paper_title VARCHAR(255), conference VARCHAR(255), publish_date DATE)";
+const researchPapersTable = "CREATE TABLE IF NOT EXISTS research_papers(paper_id INT PRIMARY KEY, paper_title VARCHAR(255), conference VARCHAR(255), publish_date DATE)";
 
 connection.query(researchPapersTable, (err, result) => {
     if (err) throw err;
@@ -24,7 +24,7 @@ connection.query(researchPapersTable, (err, result) => {
 });
 
 // adding author_id to research_Paper table
-const addAuthorIDtoResearchPapersTable = `ALTER TABLE research_Papers ADD author_id INT, ADD CONSTRAINT fk_author_id FOREIGN KEY (author_id) REFERENCES authors(author_id)`;
+const addAuthorIDtoResearchPapersTable = `ALTER TABLE research_papers ADD author_id INT, ADD CONSTRAINT fk_author_id FOREIGN KEY (author_id) REFERENCES authors(author_id)`;
 
 connection.query(addAuthorIDtoResearchPapersTable, (err, result) => {
     if (err) throw err;
@@ -32,7 +32,7 @@ connection.query(addAuthorIDtoResearchPapersTable, (err, result) => {
 });
 
 // creating new table for relationship
-const relationshipTable = `CREATE TABLE Authors_papers_relationship(author_id INT, paper_id INT,PRIMARY KEY(author_id, paper_id), CONSTRAINT fk_author_id FOREIGN KEY (author_id) REFERENCES authors(author_id), CONSTRAINT fk_paper_id FOREIGN KEY (paper_id) REFERENCES research_papers(paper_id))`;
+const relationshipTable = `CREATE TABLE Authors_papers_relationship(author_id INT, paper_id INT,PRIMARY KEY(author_id, paper_id), CONSTRAINT fk_rl_author_id FOREIGN KEY (author_id) REFERENCES authors(author_id), CONSTRAINT fk_paper_id FOREIGN KEY (paper_id) REFERENCES research_papers(paper_id))`;
 
 connection.query(relationshipTable, (err, result) => {
     if (err) throw err;
