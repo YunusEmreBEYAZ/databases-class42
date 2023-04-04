@@ -1,5 +1,5 @@
 const data = require("./data.json");
-
+require("dotenv").config();
 /**
  * This function will drop and recreate the collection of sample data in our csv file.
  * By doing this we ensure that your functions are working on the same data, very similar to how you would set up a test environment.
