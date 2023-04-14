@@ -33,7 +33,11 @@ food_code and food_description is representing same thing we can exract venue_de
         -member_id (FK to members table)
         -dinner_date
         -venue_code (FK to venue table)
-        -food_code (FK to foods table)
+
+    3- orders
+        -order_id (PK)
+        -dinner_id (FK to dinner table)
+        -food_code(FK to foods table)
 
     3- venue
         -venue_code (PK)
@@ -48,3 +52,5 @@ food_code and food_description is representing same thing we can exract venue_de
         -street
         -door_number
         -region
+
+i have added orders table for if one dinner more than 1 food_code. we can connect them now
