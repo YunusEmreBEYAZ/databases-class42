@@ -39,15 +39,15 @@ food_code and food_description is representing same thing we can exract venue_de
         -dinner_id (FK to dinner table)
         -food_code(FK to foods table)
 
-    3- venue
+    4- venue
         -venue_code (PK)
         -venue_description
 
-    4- foods
+    5- foods
         -food_code (PK)
         -food_description
 
-    5- memberAddress
+    6- memberAddress
         -member_id (PK)(FK to members table)
         -street
         -door_number
