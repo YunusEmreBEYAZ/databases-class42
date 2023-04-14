@@ -28,7 +28,7 @@ db.connect((err) => {
             const fromAccountBalance = selectFromAccountResult.balance;
 
             if (fromAccountBalance < amount) {
-                throw 'You dont have enough money to transfer';
+                throw new Error('You dont have enough money to transfer');
             }
 
             const updateFromAccount = `UPDATE account
